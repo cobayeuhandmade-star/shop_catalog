@@ -1,0 +1,111 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: var(--space-xl);
+}
+
+.section {
+  background: white;
+  border-radius: var(--radius-md);
+  padding: var(--space-xl);
+  margin-bottom: var(--space-xl);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+.sectionTitle {
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  color: var(--color-ink);
+  margin-bottom: var(--space-md);
+  padding-bottom: var(--space-sm);
+  border-bottom: 1px solid var(--color-hairline);
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  margin-bottom: var(--space-md);
+}
+
+.formGroup label {
+  font-weight: 500;
+  color: var(--color-ink);
+}
+
+.input {
+  padding: var(--space-sm) var(--space-md);
+  border: 1px solid var(--color-hairline);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-md);
+  color: var(--color-ink);
+  width: 100%;
+  max-width: 600px;
+}
+
+.previewImage {
+  margin-top: var(--space-sm);
+  max-width: 300px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-hairline);
+}
+
+.galleryGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: var(--space-md);
+  margin-top: var(--space-md);
+}
+
+.galleryCard {
+  border: 1px solid var(--color-hairline);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  position: relative;
+}
+
+.galleryImageWrapper {
+  aspect-ratio: 1;
+  position: relative;
+  background: var(--color-surface);
+}
+
+.galleryImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.galleryInfo {
+  padding: var(--space-sm);
+  background: white;
+}
+
+.galleryTitle {
+  font-size: var(--font-size-sm);
+  color: var(--color-ink);
+  margin-bottom: var(--space-xs);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.deleteBtn {
+  background: #fee2e2;
+  color: #dc2626;
+  border: none;
+  padding: 4px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: var(--font-size-xs);
+  width: 100%;
+}
+
+.deleteBtn:hover {
+  background: #fca5a5;
+}
+
+.saveBtn {
+  margin-top: var(--space-sm);
+}

@@ -1,0 +1,61 @@
+.footer {
+  background-color: var(--color-primary); /* Xanh rừng đậm */
+  border-top: none;
+  padding: var(--space-band) var(--space-xl) var(--space-xl);
+  color: var(--color-on-primary); /* Text mặc định là màu trắng */
+}
+
+.container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--space-xl);
+  margin-bottom: var(--space-xl);
+}
+
+.column h3 {
+  color: var(--color-accent-gold); /* Tiêu đề màu Gold cho sang */
+  margin-bottom: var(--space-md);
+  font-size: var(--font-size-lg);
+}
+
+.column p {
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: var(--space-xs);
+  line-height: 1.6;
+}
+
+.socials {
+  display: flex;
+  gap: var(--space-sm);
+  margin-top: var(--space-sm);
+}
+
+.socialIcon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.1); /* Hơi trong suốt mờ mờ */
+  color: var(--color-on-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.2s ease;
+}
+
+.socialIcon:hover {
+  background-color: var(--color-accent-gold);
+  color: var(--color-primary); /* Chữ/icon đậm trên nền gold */
+  border-color: var(--color-accent-gold);
+}
+
+.copyright {
+  text-align: center;
+  padding-top: var(--space-md);
+  border-top: 1px solid rgba(255, 255, 255, 0.1); /* Viền trên phân cách */
+  color: rgba(255, 255, 255, 0.5); /* Chữ xám trắng */
+  font-size: var(--font-size-sm);
+}

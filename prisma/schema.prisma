@@ -1,0 +1,79 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  // Development: SQLite (file local, zero config)
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+
+  // Production: uncomment provider tương ứng
+  // provider = "mysql"
+  // provider = "postgresql"
+}
+
+// =============================================
+// Admin Account
+// =============================================
+model Admin {
+  id        Int      @id @default(autoincrement())
+  username  String   @unique
+  password  String   // bcrypt hashed
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// Category values (String): NOI_THAT | NOEL | TET | HOA_KHO
+
+// =============================================
+// Products
+// =============================================
+model Product {
+  id          Int            @id @default(autoincrement())
+  name        String
+  price       Int            // Giá VND (số nguyên, ví dụ: 1500000)
+  category    String         // Dùng String thay vì enum cho SQLite compatibility
+  material    String?        // Chất liệu
+  size        String?        // Kích thước
+  description String?        // Mô tả sản phẩm (optional)
+  isActive    Boolean        @default(true)
+  createdAt   DateTime       @default(now())
+  updatedAt   DateTime       @updatedAt
+  images      ProductImage[]
+}
+
+// =============================================
+// Product Images (nhiều ảnh/sản phẩm)
+// =============================================
+model ProductImage {
+  id        Int     @id @default(autoincrement())
+  url       String  // Đường dẫn ảnh: /uploads/filename.jpg
+  order     Int     @default(0)     // Thứ tự hiển thị
+  isMain    Boolean @default(false) // Ảnh đại diện chính
+
+  product   Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+  productId Int
+}
+
+// =============================================
+// Site Settings (Configurable by Admin)
+// =============================================
+model SiteSetting {
+  key       String   @id // e.g. "ABOUT_IMAGE", "HERO_TITLE"
+  value     String   // The actual value (e.g. "/uploads/xyz.jpg")
+  updatedAt DateTime @updatedAt
+}
+
+// =============================================
+// Gallery Images
+// =============================================
+model GalleryImage {
+  id        Int      @id @default(autoincrement())
+  url       String
+  title     String?  // Tiêu đề ảnh (vd: "Không gian phòng khách")
+  order     Int      @default(0)
+  createdAt DateTime @default(now())
+}

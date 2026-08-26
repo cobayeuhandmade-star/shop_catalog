@@ -1,0 +1,117 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--header-height);
+  background-color: var(--color-primary);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  z-index: 100;
+  transition: all 0.3s ease;
+}
+
+.scrolled {
+  box-shadow: var(--shadow-md);
+  border-bottom-color: transparent;
+  background-color: rgba(45, 74, 62, 0.95); /* #2D4A3E with opacity */
+  backdrop-filter: blur(8px);
+}
+
+.container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+  color: var(--color-on-primary);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+.logoAccent {
+  color: var(--color-accent-gold);
+}
+
+.nav {
+  display: flex;
+  gap: var(--space-lg);
+  align-items: center;
+}
+
+.navLink {
+  color: rgba(255, 255, 255, 0.8); /* Slightly faded white for idle state */
+  text-decoration: none;
+  font-size: 1.1rem; /* Tăng kích thước chữ */
+  font-weight: 600; /* Làm chữ đậm hơn */
+  opacity: 0.9;
+  transition: opacity 0.2s ease, color 0.2s ease;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: var(--space-xs) 0;
+  position: relative;
+  text-transform: uppercase; /* Viết hoa để trông nổi bật và sang trọng hơn */
+  letter-spacing: 1px;
+}
+
+.navLink::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--color-accent-gold);
+}
+
+.navLink:hover {
+  opacity: 1;
+  color: var(--color-accent-gold);
+}
+
+.navLinkActive {
+  opacity: 1;
+  color: var(--color-accent-gold);
+}
+
+.navLinkActive::after {
+  width: 100%;
+}
+
+.mobileMenuBtn {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--color-on-primary);
+  cursor: pointer;
+  padding: var(--space-xs);
+}
+
+@media (max-width: 768px) {
+  .nav {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    background-color: var(--color-primary);
+    padding: var(--space-md);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+  }
+
+  .nav.mobileOpen {
+    display: flex;
+  }
+
+  .mobileMenuBtn {
+    display: block;
+  }
+}

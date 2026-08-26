@@ -1,0 +1,90 @@
+/* 
+  Typography System 
+  Font-family is set globally in layout.tsx via next/font
+*/
+
+body {
+  font-family: var(--font-family);
+  font-size: var(--font-size-body);
+  color: var(--color-body);
+  line-height: 1.5;
+  background-color: var(--color-canvas);
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 0;
+  margin-bottom: var(--space-sm);
+  color: var(--color-ink);
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.text-display {
+  font-size: var(--font-size-2xl); /* 28px */
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.text-heading-1 {
+  font-size: var(--font-size-xl); /* 24px */
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.text-heading-2 {
+  font-size: var(--font-size-lg); /* 18px */
+  font-weight: 600;
+}
+
+.text-title {
+  font-size: var(--font-size-md); /* 16px */
+  font-weight: 600;
+}
+
+/* Body */
+.text-body {
+  font-size: var(--font-size-body); /* 15.2px */
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.text-body-medium {
+  font-size: var(--font-size-body);
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+/* Small / Labels */
+.text-sm {
+  font-size: var(--font-size-sm); /* 14px */
+  font-weight: 400;
+}
+
+.text-sm-medium {
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+}
+
+.text-xs {
+  font-size: var(--font-size-xs); /* 12px */
+  font-weight: 400;
+}
+
+/* Text Colors */
+.text-ink { color: var(--color-ink); }
+.text-body-color { color: var(--color-body); }
+.text-muted { color: var(--color-muted); }
+.text-faint { color: var(--color-faint); }
+.text-primary { color: var(--color-primary); }
+.text-accent { color: var(--color-accent-gold); }
+.text-white { color: var(--color-on-primary); }
+
+/* Text Alignment */
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }

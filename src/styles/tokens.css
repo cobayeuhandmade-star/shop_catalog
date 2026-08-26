@@ -1,0 +1,51 @@
+:root {
+  /* Colors — Brand: Xanh rừng đậm (#2D4A3E), thay thế cam FUTA */
+  --color-primary: #2D4A3E;       /* Xanh rừng đậm — màu chủ đạo chốt */
+  --color-primary-hover: #234038; /* Hover state: tối hơn 10% */
+  --color-primary-light: #EEF3EF; /* Surface nhạt từ primary */
+  --color-accent-gold: #C9A96E;   /* Vàng gold — điểm nhấn */
+  --color-accent-gold-light: #F5EDD8; /* Gold nhạt cho background */
+  --color-canvas: #FFFFFF;
+  --color-surface-alt: #F7FAF8;   /* Cream xanh nhạt (thay #FFF7F5 của FUTA) */
+  --color-on-primary: #FFFFFF;
+  --color-ink: #000000;
+  --color-body: #111111;
+  --color-muted: #4A4A4A;
+  --color-faint: #4B5563;
+  --color-hairline: #E5E7EB;
+
+  /* Typography */
+  --font-family: 'Inter Tight', system-ui, sans-serif;
+  --font-size-xs: 12px;
+  --font-size-sm: 14px;
+  --font-size-body: 15.2px;
+  --font-size-md: 16px;
+  --font-size-lg: 18px;
+  --font-size-xl: 24px;
+  --font-size-2xl: 28px;
+
+  /* Spacing */
+  --space-xxs: 4px;
+  --space-xs: 8px;
+  --space-sm: 12px;
+  --space-md: 16px;
+  --space-lg: 20px;
+  --space-xl: 24px;
+  --space-xxl: 28px;
+  --space-xxxl: 32px;
+  --space-section: 40px;
+  --space-band: 80px;
+
+  /* Border Radius */
+  --radius-none: 0px;
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-sm: rgba(0, 0, 0, 0.016) 0px 2px 0px 0px;
+
+  /* Container */
+  --container-max: 1200px;
+}

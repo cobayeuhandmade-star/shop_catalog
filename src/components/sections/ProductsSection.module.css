@@ -1,0 +1,76 @@
+.productsSection {
+  padding: var(--space-section) var(--space-xl);
+  background-color: var(--color-canvas);
+}
+
+.container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: var(--space-xl);
+}
+
+.title {
+  color: var(--color-primary);
+  margin-bottom: var(--space-sm);
+}
+
+.tabs {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-sm);
+  margin-top: var(--space-lg);
+  flex-wrap: wrap;
+}
+
+.tab {
+  padding: var(--space-xs) var(--space-lg);
+  background: none;
+  border: 1px solid var(--color-hairline);
+  border-radius: var(--radius-full);
+  color: var(--color-muted);
+  font-family: var(--font-family);
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.tab:hover {
+  border-color: var(--color-primary-light);
+  color: var(--color-primary);
+}
+
+.tabActive {
+  background-color: var(--color-primary);
+  color: var(--color-on-primary);
+  border-color: var(--color-primary);
+}
+
+.tabActive:hover {
+  color: var(--color-on-primary);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: var(--space-lg);
+  animation: fadeInGrid 0.4s ease-out;
+}
+
+@keyframes fadeInGrid {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.emptyState {
+  text-align: center;
+  padding: var(--space-section);
+  color: var(--color-faint);
+  background-color: var(--color-surface-alt);
+  border-radius: var(--radius-md);
+  margin-top: var(--space-md);
+}
