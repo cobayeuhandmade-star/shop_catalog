@@ -13,21 +13,19 @@ export default async function AboutSection() {
     <section id="about" className={styles.about}>
       <div className={styles.container}>
         <div className={styles.imageSingle}>
-          <img 
-            src={imageUrl} 
-            alt="Không gian nội thất tinh tế" 
-            className={styles.img}
-          />
-          <div className={styles.experienceBadge}>
-            <span className={styles.expNumber}>10+</span>
-            <span className={styles.expText}>Năm kinh<br/>nghiệm</span>
+          <div className={styles.imgWrapper}>
+            <img 
+              src={imageUrl} 
+              alt="Không gian nội thất tinh tế" 
+              className={styles.img}
+            />
           </div>
         </div>
 
         {/* Cột phải: Nội dung */}
         <div className={styles.content}>
           <div className={styles.badge}>Về chúng tôi</div>
-          <h2 className={styles.title}>Nghệ thuật trang trí nâng tầm không gian</h2>
+          <h2 className={`text-heading-1 ${styles.title}`}>Nghệ thuật trang trí nâng tầm không gian</h2>
           <p className={styles.description}>
             DECOR SHOP tự hào là địa chỉ tin cậy mang đến những sản phẩm trang trí nội thất tinh tế, 
             đáp ứng đa dạng phong cách từ hiện đại, tối giản đến cổ điển. Đặc biệt, chúng tôi cung cấp

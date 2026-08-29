@@ -4,10 +4,11 @@ import { prisma } from "@/lib/prisma";
 // Xóa ảnh khỏi gallery
 export async function DELETE(
   request: Request,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    const id = parseInt(params.id);
+    const resolvedParams = await params;
+    const id = parseInt(resolvedParams.id);
     if (isNaN(id)) {
       return NextResponse.json({ error: "ID không hợp lệ" }, { status: 400 });
     }

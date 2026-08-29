@@ -31,9 +31,31 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .text-heading-1 {
-  font-size: var(--font-size-xl); /* 24px */
+  font-size: clamp(var(--font-size-xl), 4vw, var(--font-size-2xl));
   font-weight: 700;
   letter-spacing: -0.01em;
+  position: relative;
+  display: inline-block;
+  padding-top: var(--space-md);
+}
+
+/* Gold accent line for all main section headings */
+.text-heading-1::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 48px;
+  height: 4px;
+  background-color: var(--color-accent-gold);
+  border-radius: 2px;
+}
+
+/* Center the line if the heading is inside a centered container */
+.text-center .text-heading-1::before,
+.text-heading-1.center-line::before {
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .text-heading-2 {

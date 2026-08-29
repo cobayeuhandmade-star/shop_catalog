@@ -4,7 +4,7 @@
 }
 
 .container {
-  max-width: var(--container-max);
+  max-width: 1000px; /* Thu nhỏ container để ảnh không bị bành trướng quá to */
   margin: 0 auto;
 }
 
@@ -27,8 +27,8 @@
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: var(--space-md);
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: var(--space-lg);
 }
 
 .imageCard {

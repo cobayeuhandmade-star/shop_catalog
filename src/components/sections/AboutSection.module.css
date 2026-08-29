@@ -14,54 +14,68 @@
 .imageSingle {
   position: relative;
   width: 100%;
-  aspect-ratio: 4 / 5;
-  border-radius: var(--radius-lg);
+  aspect-ratio: 1 / 1;
+  z-index: 1;
+}
+
+.imageSingle::before {
+  content: '';
+  position: absolute;
+  top: 16px;
+  left: -16px;
+  width: 100%;
+  height: 100%;
+  border: 2px solid var(--color-accent-gold);
+  border-radius: 24px;
+  z-index: -1;
+  transition: all 0.5s ease;
+  opacity: 0.8;
+}
+
+.imageSingle::after {
+  content: '';
+  position: absolute;
+  bottom: -30px;
+  right: -30px;
+  width: 120px;
+  height: 120px;
+  background-image: radial-gradient(var(--color-accent-gold) 2px, transparent 2px);
+  background-size: 16px 16px;
+  z-index: -2;
+  opacity: 0.3;
+  transition: opacity 0.5s ease;
+}
+
+.imgWrapper {
+  width: 100%;
+  height: 100%;
+  border-radius: 24px;
   overflow: hidden;
-  box-shadow: var(--shadow-sm);
+  box-shadow: var(--shadow-lg);
   background-color: var(--color-surface-alt);
+  position: relative;
+  z-index: 2;
 }
 
 .img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.5s ease;
+  transition: transform 0.7s ease;
 }
 
 .imageSingle:hover .img {
-  transform: scale(1.05);
+  transform: scale(1.08);
 }
 
-.experienceBadge {
-  position: absolute;
-  bottom: 10%;
-  left: -20px;
-  background-color: var(--color-primary);
-  color: var(--color-on-primary);
-  padding: var(--space-md);
-  border-radius: var(--radius-md);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  z-index: 3;
-  box-shadow: var(--shadow-sm);
-  text-align: center;
-  animation: pulseGlow 4s infinite;
+.imageSingle:hover::before {
+  top: 8px;
+  left: -8px;
+  opacity: 1;
 }
 
-.expNumber {
-  font-size: var(--font-size-2xl);
-  font-weight: 700;
-  color: var(--color-accent-gold);
-  line-height: 1;
-  margin-bottom: var(--space-xxs);
-}
-
-.expText {
-  font-size: var(--font-size-xs);
-  text-transform: uppercase;
-  letter-spacing: 1px;
+.imageSingle:hover::after {
+  opacity: 0.6;
 }
 
 .content {

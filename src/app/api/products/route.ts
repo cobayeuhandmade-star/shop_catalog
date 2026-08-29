@@ -38,7 +38,7 @@ export async function POST(request: Request) {
     // if (!session) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
     const body = await request.json();
-    const { name, price, category, material, size, description, isActive, images } = body;
+    const { name, price, category, material, size, description, isActive, isFeatured, images } = body;
 
     if (!name || price === undefined || !category) {
       return NextResponse.json({ error: 'Thiếu thông tin bắt buộc' }, { status: 400 });
@@ -53,6 +53,7 @@ export async function POST(request: Request) {
         size: size || null,
         description: description || null,
         isActive: isActive !== undefined ? isActive : true,
+        isFeatured: isFeatured !== undefined ? isFeatured : false,
         ...(images && images.length > 0 && {
           images: {
             create: images.map((img: any) => ({

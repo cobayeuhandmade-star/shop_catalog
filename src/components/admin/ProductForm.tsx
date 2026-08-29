@@ -32,6 +32,7 @@ export default function ProductForm({ initialData, isEditing = false }: ProductF
     size: initialData?.size || "",
     description: initialData?.description || "",
     isActive: initialData?.isActive !== undefined ? initialData.isActive : true,
+    isFeatured: initialData?.isFeatured || false,
   });
 
   const [images, setImages] = useState<ProductImage[]>(
@@ -242,7 +243,7 @@ export default function ProductForm({ initialData, isEditing = false }: ProductF
             />
           </div>
 
-          <div className={styles.formGroup} style={{ alignSelf: "center" }}>
+          <div className={styles.formGroup} style={{ alignSelf: "center", display: "flex", flexDirection: "column", gap: "10px" }}>
             <label className={styles.checkboxLabel}>
               <input 
                 type="checkbox" 
@@ -251,6 +252,15 @@ export default function ProductForm({ initialData, isEditing = false }: ProductF
                 onChange={handleInputChange} 
               />
               Hiển thị sản phẩm trên website
+            </label>
+            <label className={styles.checkboxLabel}>
+              <input 
+                type="checkbox" 
+                name="isFeatured" 
+                checked={formData.isFeatured} 
+                onChange={handleInputChange} 
+              />
+              Hiển thị ở mục Nổi bật trên Trang chủ
             </label>
           </div>
 

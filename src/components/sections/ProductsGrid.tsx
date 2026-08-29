@@ -12,7 +12,13 @@ const categories = [
   { id: "dried-flowers", label: "Hoa khô" },
 ];
 
-export default function ProductsGrid({ initialProducts }: { initialProducts: Product[] }) {
+export default function ProductsGrid({ 
+  initialProducts,
+  showTabs = true
+}: { 
+  initialProducts: Product[];
+  showTabs?: boolean;
+}) {
   const [activeCategory, setActiveCategory] = useState("furniture");
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
 
@@ -41,26 +47,28 @@ export default function ProductsGrid({ initialProducts }: { initialProducts: Pro
 
   const activeLabel = categories.find(c => c.id === activeCategory)?.label || "Nội thất";
   
-  const filteredProducts = initialProducts.filter(
-    (product) => product.category === activeLabel
-  );
+  const filteredProducts = showTabs 
+    ? initialProducts.filter((product) => product.category === activeLabel)
+    : initialProducts;
 
   return (
     <>
-      <div className={styles.tabs}>
-        {categories.map((category) => (
-          <button
-            key={category.id}
-            id={category.id} // Gắn ID để Header có thể scroll tới và IntersectionObserver có thể nhận diện
-            className={`${styles.tab} ${
-              activeCategory === category.id ? styles.tabActive : ""
-            }`}
-            onClick={() => handleTabClick(category.id)}
-          >
-            {category.label}
-          </button>
-        ))}
-      </div>
+      {showTabs && (
+        <div className={styles.tabs}>
+          {categories.map((category) => (
+            <button
+              key={category.id}
+              id={category.id} // Gắn ID để Header có thể scroll tới và IntersectionObserver có thể nhận diện
+              className={`${styles.tab} ${
+                activeCategory === category.id ? styles.tabActive : ""
+              }`}
+              onClick={() => handleTabClick(category.id)}
+            >
+              {category.label}
+            </button>
+          ))}
+        </div>
+      )}
 
       <div key={activeCategory} className={styles.grid} style={{ marginTop: "var(--space-xl)" }}>
         {filteredProducts.length > 0 ? (

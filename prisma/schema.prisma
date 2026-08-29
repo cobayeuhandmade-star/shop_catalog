@@ -40,6 +40,7 @@ model Product {
   size        String?        // Kích thước
   description String?        // Mô tả sản phẩm (optional)
   isActive    Boolean        @default(true)
+  isFeatured  Boolean        @default(false) // Hiển thị ở Trang chủ
   createdAt   DateTime       @default(now())
   updatedAt   DateTime       @updatedAt
   images      ProductImage[]

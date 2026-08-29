@@ -2,20 +2,40 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import styles from "./Header.module.css";
 
 const navLinks = [
-  { id: "hero", label: "Trang chủ" },
-  { id: "about", label: "Giới thiệu" },
-  { id: "products", label: "Sản phẩm" },
-  { id: "contact", label: "Liên hệ" },
+  { href: "/", id: "hero", label: "Trang chủ" },
+  { href: "/#about", id: "about", label: "Giới thiệu" },
+  { href: "/san-pham", id: "products", label: "Sản phẩm" },
+  { href: "/#contact", id: "contact", label: "Liên hệ" },
 ];
 
 export default function Header() {
-  const [activeSection, setActiveSection] = useState("hero");
+  const pathname = usePathname();
+  const [activeSection, setActiveSection] = useState("");
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
+  // 1. Đồng bộ active state dựa trên URL hiện tại
   useEffect(() => {
+    if (pathname === "/san-pham") {
+      setActiveSection("products");
+    } else if (pathname === "/") {
+      setActiveSection("hero"); // Default for home
+      // Check hash on load
+      const hash = window.location.hash.replace("#", "");
+      if (hash && navLinks.some(l => l.id === hash)) {
+        setActiveSection(hash);
+      }
+    }
+  }, [pathname]);
+
+  // 2. Intersection Observer chỉ chạy trên trang chủ
+  useEffect(() => {
+    if (pathname !== "/") return;
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -25,21 +45,21 @@ export default function Header() {
         });
       },
       {
-        rootMargin: "-20% 0px -40% 0px", // Mở rộng vùng kích hoạt để các section ngắn ở cuối trang vẫn nhận được
+        rootMargin: "-20% 0px -40% 0px",
       }
     );
 
     navLinks.forEach((link) => {
-      const element = document.getElementById(link.id);
-      if (element) observer.observe(element);
+      if (link.id !== "products") { // Bỏ qua sản phẩm vì nó ở trang khác
+        const element = document.getElementById(link.id);
+        if (element) observer.observe(element);
+      }
     });
 
     return () => observer.disconnect();
-  }, []);
+  }, [pathname]);
 
   // Lắng nghe sự kiện scroll để thêm bóng đổ cho Header
-  const [isScrolled, setIsScrolled] = useState(false);
-  
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
@@ -49,15 +69,32 @@ export default function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const scrollToSection = (id: string) => {
-    setIsMobileMenuOpen(false); // Đóng menu nếu ở mobile
-    setActiveSection(id); // Cập nhật ngay lập tức vạch kẻ dưới
-    
-    // Nếu đang ở trang khác không phải trang chủ, có thể cần Next/Router, 
-    // nhưng đây là Single Page nên scroll thẳng
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string, id: string) => {
+    setIsMobileMenuOpen(false);
+
+    if (href === "/san-pham") {
+      setActiveSection("products");
+      return;
+    }
+
+    if (pathname === "/") {
+      if (href.startsWith("/#")) {
+        e.preventDefault();
+        setActiveSection(id);
+        const element = document.getElementById(id);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+          window.history.pushState(null, "", `/${href.substring(1)}`);
+        }
+      } else if (href === "/") {
+        e.preventDefault();
+        setActiveSection("hero");
+        window.scrollTo({ top: 0, behavior: "smooth" });
+        window.history.pushState(null, "", "/");
+      }
+    } else {
+      // Đang ở trang /san-pham và muốn về lại trang chủ có hash
+      setActiveSection(id);
     }
   };
 
@@ -72,15 +109,16 @@ export default function Header() {
         {/* Desktop Nav */}
         <nav className={`${styles.nav} ${isMobileMenuOpen ? styles.mobileOpen : ""}`}>
           {navLinks.map((link) => (
-            <button
+            <Link
               key={link.id}
-              onClick={() => scrollToSection(link.id)}
+              href={link.href}
+              onClick={(e) => handleClick(e, link.href, link.id)}
               className={`${styles.navLink} ${
                 activeSection === link.id ? styles.navLinkActive : ""
               }`}
             >
               {link.label}
-            </button>
+            </Link>
           ))}
         </nav>
 

@@ -7,7 +7,7 @@
 ### 1. Giao diện Khách hàng (Public Site)
 - **Thiết kế Sang trọng:** Sử dụng tone màu Xanh Rừng Đậm (#2D4A3E) kết hợp Vàng Gold (#C9A96E), phong cách thiết kế tạp chí kiến trúc.
 - **Hiệu ứng Parallax 3D:** Họa tiết chìm (watermark) và vân giấy nhám chuyển động mượt mà khi cuộn trang, tạo chiều sâu thị giác.
-- **Single-page Navigation:** Chuyển hướng mượt mà (smooth scroll) giữa các khu vực: Trang chủ, Sản phẩm (Nội thất, Noel, Tết, Hoa khô), Gallery, Liên hệ.
+- **Hybrid Navigation:** Trang chủ (Landing page) kết hợp trang con. Chuyển hướng mượt mà (smooth scroll) ở trang chủ và cấu trúc trang riêng cho danh sách Sản phẩm (Nội thất, Noel, Tết, Hoa khô).
 - **Tương tác Cao cấp:** Popup chi tiết sản phẩm (Modal), Phóng to ảnh thực tế (Lightbox) hoạt động mượt mà không cần chuyển trang.
 
 ### 2. Trang Quản trị (Admin CMS)

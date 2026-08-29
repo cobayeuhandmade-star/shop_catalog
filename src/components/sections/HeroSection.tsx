@@ -40,10 +40,7 @@ export default function HeroSection() {
         </p>
         
         <div className={styles.actions}>
-          <Link href="#products" onClick={(e) => {
-            e.preventDefault();
-            document.getElementById("products")?.scrollIntoView({ behavior: "smooth" });
-          }} className="btn btn-primary">
+          <Link href="/san-pham" className="btn btn-primary">
             Khám phá sản phẩm
           </Link>
           <Link href="#about" className="btn btn-outline">
