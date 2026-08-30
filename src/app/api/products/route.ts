@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
+import { auth } from "@/auth";
 
 // GET /api/products - Lấy danh sách sản phẩm
 export async function GET(request: Request) {
@@ -33,9 +34,9 @@ export async function GET(request: Request) {
 // POST /api/products - Tạo sản phẩm mới (Dành cho Admin)
 export async function POST(request: Request) {
   try {
-    // TODO: Phase 6 - Thêm check session NextAuth ở đây
-    // const session = await auth();
-    // if (!session) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    // Kích hoạt check session NextAuth
+    const session = await auth();
+    if (!session) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
     const body = await request.json();
     const { name, price, category, material, size, description, isActive, isFeatured, images } = body;

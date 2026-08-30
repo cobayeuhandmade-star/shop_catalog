@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
+import { auth } from "@/auth";
 
 // GET /api/products/[id] - Lấy chi tiết 1 sản phẩm
 export async function GET(
@@ -40,8 +41,9 @@ export async function PUT(
   { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    // TODO: Phase 6 - Thêm check session NextAuth ở đây
-
+    // Kích hoạt check session
+    const session = await auth();
+    if (!session) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     const resolvedParams = await params;
     const id = parseInt(resolvedParams.id);
     if (isNaN(id)) return NextResponse.json({ error: 'ID không hợp lệ' }, { status: 400 });
@@ -87,8 +89,9 @@ export async function DELETE(
   { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    // TODO: Phase 6 - Thêm check session NextAuth ở đây
-
+    // Kích hoạt check session
+    const session = await auth();
+    if (!session) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     const resolvedParams = await params;
     const id = parseInt(resolvedParams.id);
     if (isNaN(id)) return NextResponse.json({ error: 'ID không hợp lệ' }, { status: 400 });

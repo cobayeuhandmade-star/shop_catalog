@@ -15,8 +15,10 @@ export default async function AdminLayout({
 }) {
   const session = await auth();
 
-  // Middleware cũng đã chặn rồi, nhưng check thêm ở đây cho chắc chắn đối với các route con
-  // Trừ trang login ra
+  // Redirect nếu chưa đăng nhập (Server-side fallback)
+  if (!session) {
+    redirect("/admin/login");
+  }
   return (
     <div className={styles.adminLayout}>
       {/* Sidebar */}

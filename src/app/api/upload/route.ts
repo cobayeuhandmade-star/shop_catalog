@@ -2,12 +2,14 @@ import { NextResponse } from 'next/server';
 import { writeFile, mkdir } from 'fs/promises';
 import { join } from 'path';
 import { existsSync } from 'fs';
+import { auth } from "@/auth";
 
 // POST /api/upload - Upload ảnh sản phẩm (Admin only)
 export async function POST(request: Request) {
   try {
-    // TODO: Phase 6 - Thêm check session NextAuth ở đây
-
+    // Kích hoạt check session
+    const session = await auth();
+    if (!session) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     const formData = await request.formData();
     const file = formData.get('file') as File | null;
 

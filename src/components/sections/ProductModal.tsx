@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import styles from "./ProductModal.module.css";
 import { Product } from "./ProductCard";
 
@@ -11,16 +11,39 @@ interface ProductModalProps {
 
 export default function ProductModal({ product, onClose }: ProductModalProps) {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [isFullscreen, setIsFullscreen] = useState(false);
+  const thumbnailListRef = useRef<HTMLDivElement>(null);
+  const isFullscreenRef = useRef(isFullscreen);
+
+  useEffect(() => {
+    isFullscreenRef.current = isFullscreen;
+  }, [isFullscreen]);
   
   // Lấy danh sách ảnh thật, hoặc dùng mảng trống nếu không có ảnh
   const images = product.images && product.images.length > 0 ? product.images : [];
+
+  // Tự động cuộn thumbnail khi đổi ảnh
+  useEffect(() => {
+    if (thumbnailListRef.current) {
+      const activeThumb = thumbnailListRef.current.children[currentImageIndex] as HTMLElement;
+      if (activeThumb) {
+        activeThumb.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+      }
+    }
+  }, [currentImageIndex]);
 
   // Khóa cuộn trang và lắng nghe phím ESC
   useEffect(() => {
     document.body.style.overflow = "hidden";
     
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape") onClose();
+      if (e.key === "Escape") {
+        if (isFullscreenRef.current) {
+          setIsFullscreen(false);
+        } else {
+          onClose();
+        }
+      }
     };
     
     window.addEventListener("keydown", handleKeyDown);
@@ -70,11 +93,26 @@ export default function ProductModal({ product, onClose }: ProductModalProps) {
             )}
             
             {images.length > 0 ? (
-              <img 
-                src={images[currentImageIndex].url} 
-                alt={product.name} 
-                style={{ width: "100%", height: "100%", objectFit: "cover" }} 
-              />
+              <>
+                <img 
+                  src={images[currentImageIndex].url} 
+                  alt={product.name} 
+                  style={{ width: "100%", height: "100%", objectFit: "contain" }} 
+                  onClick={() => setIsFullscreen(true)}
+                />
+                <button 
+                  className={styles.zoomButton} 
+                  onClick={() => setIsFullscreen(true)}
+                  aria-label="Xem toàn màn hình"
+                >
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="20" height="20">
+                    <polyline points="15 3 21 3 21 9"></polyline>
+                    <polyline points="9 21 3 21 3 15"></polyline>
+                    <line x1="21" y1="3" x2="14" y2="10"></line>
+                    <line x1="3" y1="21" x2="10" y2="14"></line>
+                  </svg>
+                </button>
+              </>
             ) : (
               <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="1" width="120" height="120" style={{ color: "var(--color-primary-light)"}}>
                 <rect x="20" y="20" width="60" height="60" rx="4" />
@@ -93,7 +131,7 @@ export default function ProductModal({ product, onClose }: ProductModalProps) {
           </div>
 
           {images.length > 1 && (
-            <div className={styles.thumbnailList}>
+            <div className={styles.thumbnailList} ref={thumbnailListRef}>
               {images.map((img, index) => (
                 <div 
                   key={index} 
@@ -141,13 +179,43 @@ export default function ProductModal({ product, onClose }: ProductModalProps) {
             {product.description || `Sản phẩm ${product.name} mang phong cách thiết kế hiện đại, tinh tế, là điểm nhấn hoàn hảo cho không gian sống của bạn.`}
           </p>
           
-          <div className={styles.actionArea}>
-            <a href="#contact" onClick={onClose} className={`btn btn-primary ${styles.contactBtn}`}>
-              Liên hệ tư vấn / Mua hàng
-            </a>
-          </div>
+
         </div>
       </div>
+
+      {/* Lightbox / Fullscreen Overlay */}
+      {isFullscreen && images.length > 0 && (
+        <div className={styles.lightboxOverlay} onClick={() => setIsFullscreen(false)}>
+          <button className={styles.lightboxClose} onClick={() => setIsFullscreen(false)} aria-label="Đóng">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="32" height="32">
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </button>
+          
+          <img 
+            src={images[currentImageIndex].url} 
+            alt={product.name} 
+            className={styles.lightboxImage}
+            onClick={(e) => e.stopPropagation()} 
+          />
+
+          {images.length > 1 && (
+            <>
+              <button className={`${styles.lightboxNav} ${styles.lightboxPrev}`} onClick={(e) => { e.stopPropagation(); prevImage(); }}>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="36" height="36">
+                  <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+              </button>
+              <button className={`${styles.lightboxNav} ${styles.lightboxNext}`} onClick={(e) => { e.stopPropagation(); nextImage(); }}>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="36" height="36">
+                  <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+              </button>
+            </>
+          )}
+        </div>
+      )}
     </div>
   );
 }

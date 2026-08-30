@@ -31,7 +31,7 @@ export default function LoginPage() {
               id="username"
               type="text"
               name="username"
-              placeholder="Nhập admin..."
+              placeholder="Nhập tên đăng nhập..."
               required
             />
           </div>
@@ -45,7 +45,7 @@ export default function LoginPage() {
               id="password"
               type="password"
               name="password"
-              placeholder="Nhập admin123..."
+              placeholder="Nhập mật khẩu..."
               required
             />
           </div>
