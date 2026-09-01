@@ -60,9 +60,9 @@ Mở trình duyệt và truy cập: [http://localhost:3000](http://localhost:300
 ## 🔐 Thông tin Đăng nhập Admin
 Truy cập: [http://localhost:3000/admin/login](http://localhost:3000/admin/login)
 - **Tài khoản mặc định:** `admin`
-- **Mật khẩu:** `admin123`
+- **Mật khẩu:** (Liên hệ đội Dev để lấy mật khẩu test Local)
 
-*(Mật khẩu đã được băm (hash) bảo mật trong Database. Có thể dùng Prisma Studio để can thiệp dữ liệu: `npx prisma studio`)*
+> ⚠️ CẢNH BÁO: Khi triển khai lên môi trường thực tế (Production), bắt buộc phải đổi mật khẩu và sử dụng cơ sở dữ liệu độc lập (như PostgreSQL) thay vì SQLite ở Local.
 
 ---
 

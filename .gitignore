@@ -55,3 +55,8 @@ CLAUDE.md
 
 # Project Documents
 docs/
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
