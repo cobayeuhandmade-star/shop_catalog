@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
+import { revalidatePath } from 'next/cache';
 
 // Xóa ảnh khỏi gallery
 export async function DELETE(
@@ -17,7 +18,9 @@ export async function DELETE(
       where: { id },
     });
 
-    return NextResponse.json({ success: true });
+    revalidatePath('/', 'layout');
+
+    return NextResponse.json({ success: true }, { status: 200 });
   } catch (error) {
     return NextResponse.json({ error: "Lỗi server" }, { status: 500 });
   }

@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
 import { auth } from "@/auth";
+import { revalidatePath } from 'next/cache';
 
 // GET /api/products - Lấy danh sách sản phẩm
 export async function GET(request: Request) {
@@ -67,6 +68,8 @@ export async function POST(request: Request) {
       },
       include: { images: true },
     });
+
+    revalidatePath('/', 'layout'); // Xóa cache toàn trang để UI cập nhật ngay lập tức
 
     return NextResponse.json({ product }, { status: 201 });
   } catch (error) {

@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
+import { revalidatePath } from 'next/cache';
 
 // Lấy danh sách cấu hình (hoặc 1 key cụ thể)
 export async function GET(request: Request) {

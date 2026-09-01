@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
 import { auth } from "@/auth";
+import { revalidatePath } from 'next/cache';
 
 // GET /api/products/[id] - Lấy chi tiết 1 sản phẩm
 export async function GET(
@@ -76,6 +77,8 @@ export async function PUT(
       include: { images: true },
     });
 
+    revalidatePath('/', 'layout'); // Xóa cache toàn trang
+
     return NextResponse.json({ product: updatedProduct }, { status: 200 });
   } catch (error) {
     console.error("Error updating product:", error);
@@ -100,6 +103,8 @@ export async function DELETE(
     await prisma.product.delete({
       where: { id },
     });
+
+    revalidatePath('/', 'layout'); // Xóa cache toàn trang
 
     return NextResponse.json({ success: true, message: 'Đã xóa sản phẩm' }, { status: 200 });
   } catch (error) {

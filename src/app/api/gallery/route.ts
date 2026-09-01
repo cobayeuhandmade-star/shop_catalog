@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
+import { revalidatePath } from "next/cache";
 
 // Lấy danh sách ảnh gallery
 export async function GET() {
@@ -31,6 +32,8 @@ export async function POST(request: Request) {
         order: count,
       },
     });
+
+    revalidatePath('/', 'layout');
 
     return NextResponse.json(image, { status: 201 });
   } catch (error) {
