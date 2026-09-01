@@ -6,13 +6,9 @@ generator client {
 }
 
 datasource db {
-  // Development: SQLite (file local, zero config)
-  provider = "sqlite"
-  url      = env("DATABASE_URL")
-
-  // Production: uncomment provider tương ứng
-  // provider = "mysql"
-  // provider = "postgresql"
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
 }
 
 

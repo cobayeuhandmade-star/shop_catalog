@@ -1,15 +1,18 @@
 import { NextResponse } from 'next/server';
-import { writeFile, mkdir } from 'fs/promises';
-import { join } from 'path';
-import { existsSync } from 'fs';
+import { v2 as cloudinary } from 'cloudinary';
 import { auth } from "@/auth";
 
-// POST /api/upload - Upload ảnh sản phẩm (Admin only)
+// Configure Cloudinary (it automatically picks up CLOUDINARY_URL from env)
+cloudinary.config({
+  secure: true,
+});
+
 export async function POST(request: Request) {
   try {
     // Kích hoạt check session
     const session = await auth();
     if (!session) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+
     const formData = await request.formData();
     const file = formData.get('file') as File | null;
 
@@ -25,22 +28,20 @@ export async function POST(request: Request) {
     const bytes = await file.arrayBuffer();
     const buffer = Buffer.from(bytes);
 
-    // Tạo tên file độc nhất
-    const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1e9);
-    const extension = file.name.split('.').pop();
-    const filename = `img-${uniqueSuffix}.${extension}`;
+    // Upload to Cloudinary using a stream
+    const result = await new Promise((resolve, reject) => {
+      const uploadStream = cloudinary.uploader.upload_stream(
+        { folder: 'shop_catalog' },
+        (error, result) => {
+          if (error) return reject(error);
+          resolve(result);
+        }
+      );
+      
+      uploadStream.end(buffer);
+    });
 
-    // Đảm bảo thư mục upload tồn tại
-    const uploadDir = join(process.cwd(), 'public/uploads');
-    if (!existsSync(uploadDir)) {
-      await mkdir(uploadDir, { recursive: true });
-    }
-
-    // Lưu file
-    const filepath = join(uploadDir, filename);
-    await writeFile(filepath, buffer);
-
-    const fileUrl = `/uploads/${filename}`;
+    const fileUrl = (result as any).secure_url;
 
     return NextResponse.json({ 
       success: true, 
