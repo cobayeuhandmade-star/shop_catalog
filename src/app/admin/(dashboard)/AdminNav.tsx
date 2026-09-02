@@ -5,7 +5,11 @@ import { usePathname } from "next/navigation";
 import styles from "./layout.module.css";
 import { signOut } from "next-auth/react";
 
-export default function AdminNav() {
+interface AdminNavProps {
+  onNavClick?: () => void;
+}
+
+export default function AdminNav({ onNavClick }: AdminNavProps) {
   const pathname = usePathname();
 
   return (
@@ -13,6 +17,7 @@ export default function AdminNav() {
       <nav className={styles.nav}>
         <Link 
           href="/admin/dashboard" 
+          onClick={onNavClick}
           className={`${styles.navLink} ${pathname === "/admin/dashboard" ? styles.navLinkActive : ""}`}
         >
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="18" height="18">
@@ -25,6 +30,7 @@ export default function AdminNav() {
         </Link>
         <Link 
           href="/admin/products" 
+          onClick={onNavClick}
           className={`${styles.navLink} ${pathname.startsWith("/admin/products") ? styles.navLinkActive : ""}`}
         >
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="18" height="18">
@@ -35,6 +41,7 @@ export default function AdminNav() {
         </Link>
         <Link 
           href="/admin/settings" 
+          onClick={onNavClick}
           className={`${styles.navLink} ${pathname.startsWith("/admin/settings") ? styles.navLinkActive : ""}`}
         >
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="18" height="18">
@@ -46,6 +53,7 @@ export default function AdminNav() {
         <Link 
           href="/" 
           target="_blank"
+          onClick={onNavClick}
           className={styles.navLink}
         >
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="18" height="18">
