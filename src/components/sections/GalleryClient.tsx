@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styles from "./GallerySection.module.css";
 
 type GalleryImage = {
@@ -21,13 +21,23 @@ export default function GalleryClient({ galleryItems }: GalleryClientProps) {
   const openLightbox = (index: number) => {
     setCurrentImageIndex(index);
     setLightboxOpen(true);
-    document.body.style.overflow = "hidden";
   };
 
   const closeLightbox = () => {
     setLightboxOpen(false);
-    document.body.style.overflow = "auto";
   };
+
+  useEffect(() => {
+    if (lightboxOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+    
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [lightboxOpen]);
 
   const showPrev = (e: React.MouseEvent) => {
     e.stopPropagation();

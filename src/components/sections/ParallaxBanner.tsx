@@ -8,8 +8,8 @@ export default function ParallaxBanner() {
       <div className={styles.overlay}></div>
       <div className={styles.content}>
         <h3 className={styles.quote}>
-          "Không gian sống là tấm gương phản chiếu tâm hồn.<br />
-          Hãy để sự tinh tế lên tiếng."
+          &quot;Không gian sống là tấm gương phản chiếu tâm hồn.<br />
+          Hãy để sự tinh tế lên tiếng.&quot;
         </h3>
         <p className={styles.author}>Decor Shop</p>
       </div>

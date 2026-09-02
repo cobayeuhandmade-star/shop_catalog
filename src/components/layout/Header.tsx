@@ -20,16 +20,19 @@ export default function Header() {
 
   // 1. Đồng bộ active state dựa trên URL hiện tại
   useEffect(() => {
-    if (pathname === "/san-pham") {
-      setActiveSection("products");
-    } else if (pathname === "/") {
-      setActiveSection("hero"); // Default for home
-      // Check hash on load
-      const hash = window.location.hash.replace("#", "");
-      if (hash && navLinks.some(l => l.id === hash)) {
-        setActiveSection(hash);
+    const timeout = setTimeout(() => {
+      if (pathname === "/san-pham") {
+        setActiveSection("products");
+      } else if (pathname === "/") {
+        setActiveSection("hero"); // Default for home
+        // Check hash on load
+        const hash = window.location.hash.replace("#", "");
+        if (hash && navLinks.some(l => l.id === hash)) {
+          setActiveSection(hash);
+        }
       }
-    }
+    }, 0);
+    return () => clearTimeout(timeout);
   }, [pathname]);
 
   // 2. Intersection Observer chỉ chạy trên trang chủ
