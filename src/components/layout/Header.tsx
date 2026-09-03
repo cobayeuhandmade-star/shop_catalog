@@ -67,7 +67,7 @@ export default function Header() {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
     };
-    
+
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -106,7 +106,7 @@ export default function Header() {
       <div className={styles.container}>
         {/* Logo */}
         <Link href="/" className={styles.logo}>
-          DECOR<span className={styles.logoAccent}>SHOP</span>
+          Handmade<span className={styles.logoAccent}>SHOP</span>
         </Link>
 
         {/* Desktop Nav */}
@@ -116,9 +116,8 @@ export default function Header() {
               key={link.id}
               href={link.href}
               onClick={(e) => handleClick(e, link.href, link.id)}
-              className={`${styles.navLink} ${
-                activeSection === link.id ? styles.navLinkActive : ""
-              }`}
+              className={`${styles.navLink} ${activeSection === link.id ? styles.navLinkActive : ""
+                }`}
             >
               {link.label}
             </Link>
@@ -126,7 +125,7 @@ export default function Header() {
         </nav>
 
         {/* Mobile Toggle */}
-        <button 
+        <button
           className={styles.mobileMenuBtn}
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           aria-label="Toggle menu"
