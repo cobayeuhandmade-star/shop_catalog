@@ -6,7 +6,7 @@ export default function Footer() {
     <footer className={styles.footer} id="contact">
       <div className={styles.container}>
         <div className={styles.column}>
-          <h3>DECOR SHOP</h3>
+          <h3>Yêu Handmade</h3>
           <p>Không gian sống đẹp hơn mỗi ngày.</p>
           <p>Chúng tôi cung cấp các sản phẩm trang trí nội thất, phụ kiện Noel, Tết và hoa khô cao cấp.</p>
         </div>
