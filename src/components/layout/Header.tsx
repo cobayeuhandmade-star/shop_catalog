@@ -106,7 +106,7 @@ export default function Header() {
       <div className={styles.container}>
         {/* Logo */}
         <Link href="/" className={styles.logo}>
-          Handmade<span className={styles.logoAccent}>SHOP</span>
+          Yêu<span className={styles.logoAccent}>Handmade</span>
         </Link>
 
         {/* Desktop Nav */}
