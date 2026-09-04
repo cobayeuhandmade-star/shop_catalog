@@ -11,7 +11,7 @@ export default function ParallaxBanner() {
           &quot;Không gian sống là tấm gương phản chiếu tâm hồn.<br />
           Hãy để sự tinh tế lên tiếng.&quot;
         </h3>
-        <p className={styles.author}>Decor Shop</p>
+        <p className={styles.author}>Yêu Handmade</p>
       </div>
     </section>
   );
