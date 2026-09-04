@@ -27,7 +27,7 @@ export default async function AboutSection() {
           <div className={styles.badge}>Về chúng tôi</div>
           <h2 className={`text-heading-1 ${styles.title}`}>Nghệ thuật trang trí nâng tầm không gian</h2>
           <p className={styles.description}>
-            DECOR SHOP tự hào là địa chỉ tin cậy mang đến những sản phẩm trang trí nội thất tinh tế, 
+            Yêu Handmade tự hào là địa chỉ tin cậy mang đến những sản phẩm trang trí nội thất tinh tế, 
             đáp ứng đa dạng phong cách từ hiện đại, tối giản đến cổ điển. Đặc biệt, chúng tôi cung cấp
             các bộ sưu tập độc quyền dành riêng cho dịp lễ hội như Giáng Sinh và Tết Nguyên Đán.
           </p>
