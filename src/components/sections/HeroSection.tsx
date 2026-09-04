@@ -28,7 +28,7 @@ export default function HeroSection() {
       <BotanicalLeafLeft />
       
       <div className={styles.content}>
-        <div className={styles.badge}></div>
+        <div className={styles.badge}>Yêu Handmade</div>
         
         <h1 className={`text-display ${styles.title}`}>
           Không gian sống đẹp hơn mỗi ngày
