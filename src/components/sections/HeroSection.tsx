@@ -28,7 +28,7 @@ export default function HeroSection() {
       <BotanicalLeafLeft />
       
       <div className={styles.content}>
-        <div className={styles.badge}>Premium Decor</div>
+        <div className={styles.badge}></div>
         
         <h1 className={`text-display ${styles.title}`}>
           Không gian sống đẹp hơn mỗi ngày
@@ -36,7 +36,7 @@ export default function HeroSection() {
         </h1>
         
         <p className={styles.description}>
-          Khám phá bộ sưu tập nội thất, phụ kiện trang trí theo mùa (Noel, Tết) và các thiết kế hoa khô nghệ thuật được tuyển chọn kỹ lưỡng.
+          Khám phá bộ sưu tập nội thất, phụ kiện trang trí theo mùa  và các thiết kế hoa khô nghệ thuật được tuyển chọn kỹ lưỡng.
         </p>
         
         <div className={styles.actions}>
