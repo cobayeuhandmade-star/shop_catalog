@@ -52,14 +52,19 @@ export default function ProductsGrid({
   const filteredProducts = showTabs 
     ? initialProducts.filter((product) => {
         if (product.category !== activeLabel) return false;
-        if (activeCategory === "furniture" && activeSubCategory !== "all") {
+        if ((activeCategory === "furniture" || activeCategory === "christmas") && activeSubCategory !== "all") {
           return product.subCategory === activeSubCategory;
         }
         return true;
       })
     : initialProducts;
 
-  const subCategories = ["Bàn", "Ghế", "Tủ", "Kệ", "Combo", "Khác"];
+  let subCategories: string[] = [];
+  if (activeCategory === "furniture") {
+    subCategories = ["Bàn", "Ghế", "Tủ", "Kệ", "Combo", "Khác"];
+  } else if (activeCategory === "christmas") {
+    subCategories = ["Bàn", "Cây Thông", "Treo", "Topping", "Tiểu Cảnh", "Khác"];
+  }
 
   return (
     <>
@@ -80,7 +85,7 @@ export default function ProductsGrid({
         </div>
       )}
 
-      {showTabs && activeCategory === "furniture" && (
+      {showTabs && (activeCategory === "furniture" || activeCategory === "christmas") && (
         <div className={styles.tabs} style={{ marginTop: '1rem', gap: '10px' }}>
           <button
             className={`${styles.tab} ${activeSubCategory === "all" ? styles.tabActive : ""}`}

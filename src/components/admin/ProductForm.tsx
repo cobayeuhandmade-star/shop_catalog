@@ -45,6 +45,7 @@ export default function ProductForm({ initialData, isEditing = false }: ProductF
     setFormData((prev) => ({
       ...prev,
       [name]: type === "checkbox" ? (e.target as HTMLInputElement).checked : value,
+      ...(name === "category" ? { subCategory: "" } : {})
     }));
   };
 
@@ -220,7 +221,7 @@ export default function ProductForm({ initialData, isEditing = false }: ProductF
             </select>
           </div>
 
-          {formData.category === "Nội thất" && (
+          {(formData.category === "Nội thất" || formData.category === "Noel") && (
             <div className={styles.formGroup}>
               <label className={styles.label}>Mục con</label>
               <select 
@@ -230,12 +231,26 @@ export default function ProductForm({ initialData, isEditing = false }: ProductF
                 className={styles.select}
               >
                 <option value="">-- Chọn mục con --</option>
-                <option value="Bàn">Bàn</option>
-                <option value="Ghế">Ghế</option>
-                <option value="Tủ">Tủ</option>
-                <option value="Kệ">Kệ</option>
-                <option value="Combo">Combo</option>
-                <option value="Khác">Khác</option>
+                {formData.category === "Nội thất" && (
+                  <>
+                    <option value="Bàn">Bàn</option>
+                    <option value="Ghế">Ghế</option>
+                    <option value="Tủ">Tủ</option>
+                    <option value="Kệ">Kệ</option>
+                    <option value="Combo">Combo</option>
+                    <option value="Khác">Khác</option>
+                  </>
+                )}
+                {formData.category === "Noel" && (
+                  <>
+                    <option value="Bàn">Bàn</option>
+                    <option value="Cây Thông">Cây Thông</option>
+                    <option value="Treo">Treo</option>
+                    <option value="Topping">Topping</option>
+                    <option value="Tiểu Cảnh">Tiểu Cảnh</option>
+                    <option value="Khác">Khác</option>
+                  </>
+                )}
               </select>
             </div>
           )}
