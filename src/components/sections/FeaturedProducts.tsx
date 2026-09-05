@@ -21,6 +21,7 @@ export default async function FeaturedProducts() {
     name: p.name,
     price: p.price,
     category: p.category,
+    subCategory: p.subCategory,
     material: p.material,
     size: p.size,
     description: p.description,

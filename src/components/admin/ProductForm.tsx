@@ -28,6 +28,7 @@ export default function ProductForm({ initialData, isEditing = false }: ProductF
     name: initialData?.name || "",
     price: initialData?.price || "",
     category: initialData?.category || "Nội thất",
+    subCategory: initialData?.subCategory || "",
     material: initialData?.material || "",
     size: initialData?.size || "",
     description: initialData?.description || "",
@@ -218,6 +219,26 @@ export default function ProductForm({ initialData, isEditing = false }: ProductF
               <option value="Hoa khô">Hoa khô</option>
             </select>
           </div>
+
+          {formData.category === "Nội thất" && (
+            <div className={styles.formGroup}>
+              <label className={styles.label}>Mục con</label>
+              <select 
+                name="subCategory" 
+                value={formData.subCategory} 
+                onChange={handleInputChange} 
+                className={styles.select}
+              >
+                <option value="">-- Chọn mục con --</option>
+                <option value="Bàn">Bàn</option>
+                <option value="Ghế">Ghế</option>
+                <option value="Tủ">Tủ</option>
+                <option value="Kệ">Kệ</option>
+                <option value="Combo">Combo</option>
+                <option value="Khác">Khác</option>
+              </select>
+            </div>
+          )}
 
           <div className={styles.formGroup}>
             <label className={styles.label}>Chất liệu</label>

@@ -32,6 +32,7 @@ model Product {
   name        String
   price       Int            // Giá VND (số nguyên, ví dụ: 1500000)
   category    String         // Dùng String thay vì enum cho SQLite compatibility
+  subCategory String?        // Mục con của danh mục (Bàn, Ghế, Tủ, Kệ, Combo, Khác)
   material    String?        // Chất liệu
   size        String?        // Kích thước
   description String?        // Mô tả sản phẩm (optional)

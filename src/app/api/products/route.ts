@@ -8,10 +8,12 @@ export async function GET(request: Request) {
   try {
     const { searchParams } = new URL(request.url);
     const category = searchParams.get('category');
+    const subCategory = searchParams.get('subCategory');
 
     const products = await prisma.product.findMany({
       where: {
         ...(category && category !== 'all' ? { category } : {}),
+        ...(subCategory && subCategory !== 'all' ? { subCategory } : {}),
         isActive: true, // Chỉ lấy sản phẩm đang public
       },
       include: {
@@ -40,7 +42,7 @@ export async function POST(request: Request) {
     if (!session) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
     const body = await request.json();
-    const { name, price, category, material, size, description, isActive, isFeatured, images } = body;
+    const { name, price, category, subCategory, material, size, description, isActive, isFeatured, images } = body;
 
     if (!name || price === undefined || !category) {
       return NextResponse.json({ error: 'Thiếu thông tin bắt buộc' }, { status: 400 });
@@ -51,6 +53,7 @@ export async function POST(request: Request) {
         name,
         price: Number(price),
         category,
+        subCategory: subCategory || null,
         material: material || null,
         size: size || null,
         description: description || null,

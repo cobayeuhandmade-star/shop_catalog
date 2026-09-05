@@ -50,7 +50,7 @@ export async function PUT(
     if (isNaN(id)) return NextResponse.json({ error: 'ID không hợp lệ' }, { status: 400 });
 
     const body = await request.json();
-    const { name, price, category, material, size, description, isActive, isFeatured, images } = body;
+    const { name, price, category, subCategory, material, size, description, isActive, isFeatured, images } = body;
 
     const updatedProduct = await prisma.product.update({
       where: { id },
@@ -58,6 +58,7 @@ export async function PUT(
         ...(name && { name }),
         ...(price !== undefined && { price: Number(price) }),
         ...(category && { category }),
+        ...(subCategory !== undefined && { subCategory }),
         ...(material !== undefined && { material }),
         ...(size !== undefined && { size }),
         ...(description !== undefined && { description }),

@@ -50,6 +50,11 @@ export default async function ProductsPage() {
                 <td className={styles.productName}>{product.name}</td>
                 <td>
                   <span className={styles.categoryBadge}>{product.category}</span>
+                  {product.subCategory && (
+                    <span className={styles.categoryBadge} style={{ marginLeft: '4px', backgroundColor: '#e2e8f0', color: '#475569' }}>
+                      {product.subCategory}
+                    </span>
+                  )}
                 </td>
                 <td className={styles.price}>{formatPrice(product.price)}</td>
                 <td>

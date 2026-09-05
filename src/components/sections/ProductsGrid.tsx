@@ -20,6 +20,7 @@ export default function ProductsGrid({
   showTabs?: boolean;
 }) {
   const [activeCategory, setActiveCategory] = useState("furniture");
+  const [activeSubCategory, setActiveSubCategory] = useState("all");
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
 
   // Xử lý khi URL có chứa ID (do Header cuộn xuống)
@@ -41,6 +42,7 @@ export default function ProductsGrid({
 
   const handleTabClick = (categoryId: string) => {
     setActiveCategory(categoryId);
+    setActiveSubCategory("all");
     // Cập nhật URL hash để không bị mất context khi share link
     window.history.pushState(null, "", `#${categoryId}`);
   };
@@ -48,8 +50,16 @@ export default function ProductsGrid({
   const activeLabel = categories.find(c => c.id === activeCategory)?.label || "Nội thất";
   
   const filteredProducts = showTabs 
-    ? initialProducts.filter((product) => product.category === activeLabel)
+    ? initialProducts.filter((product) => {
+        if (product.category !== activeLabel) return false;
+        if (activeCategory === "furniture" && activeSubCategory !== "all") {
+          return product.subCategory === activeSubCategory;
+        }
+        return true;
+      })
     : initialProducts;
+
+  const subCategories = ["Bàn", "Ghế", "Tủ", "Kệ", "Combo", "Khác"];
 
   return (
     <>
@@ -65,6 +75,28 @@ export default function ProductsGrid({
               onClick={() => handleTabClick(category.id)}
             >
               {category.label}
+            </button>
+          ))}
+        </div>
+      )}
+
+      {showTabs && activeCategory === "furniture" && (
+        <div className={styles.tabs} style={{ marginTop: '1rem', gap: '10px' }}>
+          <button
+            className={`${styles.tab} ${activeSubCategory === "all" ? styles.tabActive : ""}`}
+            style={{ padding: '6px 12px', fontSize: '0.9rem' }}
+            onClick={() => setActiveSubCategory("all")}
+          >
+            Tất cả
+          </button>
+          {subCategories.map((sub) => (
+            <button
+              key={sub}
+              className={`${styles.tab} ${activeSubCategory === sub ? styles.tabActive : ""}`}
+              style={{ padding: '6px 12px', fontSize: '0.9rem' }}
+              onClick={() => setActiveSubCategory(sub)}
+            >
+              {sub}
             </button>
           ))}
         </div>
