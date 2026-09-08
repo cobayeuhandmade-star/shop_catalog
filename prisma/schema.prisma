@@ -30,7 +30,7 @@ model Admin {
 model Product {
   id          Int            @id @default(autoincrement())
   name        String
-  price       Int            // Giá VND (số nguyên, ví dụ: 1500000)
+  price       String         // Giá VND (có thể là chữ, ví dụ: 1500000 hoặc "Từ 150k - 200k")
   category    String         // Dùng String thay vì enum cho SQLite compatibility
   subCategory String?        // Mục con của danh mục (Bàn, Ghế, Tủ, Kệ, Combo, Khác)
   material    String?        // Chất liệu

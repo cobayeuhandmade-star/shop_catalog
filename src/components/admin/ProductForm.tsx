@@ -147,7 +147,7 @@ export default function ProductForm({ initialData, isEditing = false }: ProductF
       // Vì JSON không nhận các hàm hoặc File, ta làm sạch payload
       const payload = {
         ...formData,
-        price: Number(formData.price),
+        price: formData.price,
         images: finalImages, // Phần API backend (ở route) cần được chỉnh sửa để handle update/create hình ảnh nếu muốn hoàn chỉnh
       };
 
@@ -196,12 +196,12 @@ export default function ProductForm({ initialData, isEditing = false }: ProductF
           <div className={styles.formGroup}>
             <label className={styles.label}>Giá bán (VNĐ) *</label>
             <input 
-              type="number" 
+              type="text" 
               name="price" 
               value={formData.price} 
               onChange={handleInputChange} 
               className={styles.input} 
-              placeholder="VD: 1500000"
+              placeholder="VD: 1.500.000 VNĐ hoặc Từ 100k - 200k"
               required 
             />
           </div>

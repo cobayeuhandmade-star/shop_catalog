@@ -56,7 +56,7 @@ export async function PUT(
       where: { id },
       data: {
         ...(name && { name }),
-        ...(price !== undefined && { price: Number(price) }),
+        ...(price !== undefined && { price }),
         ...(category && { category }),
         ...(subCategory !== undefined && { subCategory }),
         ...(material !== undefined && { material }),

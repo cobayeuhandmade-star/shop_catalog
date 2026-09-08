@@ -12,12 +12,7 @@ export default async function ProductsPage() {
     orderBy: { createdAt: "desc" },
   });
 
-  const formatPrice = (price: number) => {
-    return new Intl.NumberFormat('vi-VN', {
-      style: 'currency',
-      currency: 'VND',
-    }).format(price);
-  };
+
 
   return (
     <div>
@@ -56,7 +51,7 @@ export default async function ProductsPage() {
                     </span>
                   )}
                 </td>
-                <td className={styles.price}>{formatPrice(product.price)}</td>
+                <td className={styles.price}>{product.price}</td>
                 <td>
                   {product.isActive ? (
                     <span className={styles.statusActive}>Hiển thị</span>

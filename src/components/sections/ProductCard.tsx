@@ -6,7 +6,7 @@ import styles from "./ProductCard.module.css";
 export interface Product {
   id: number | string;
   name: string;
-  price: number;
+  price: string;
   category: string;
   subCategory?: string | null;
   material?: string | null;
@@ -22,13 +22,7 @@ export default function ProductCard({
   product: Product, 
   onClick?: () => void 
 }) {
-  // Format tiền Việt Nam
-  const formatPrice = (price: number) => {
-    return new Intl.NumberFormat('vi-VN', {
-      style: 'currency',
-      currency: 'VND',
-    }).format(price);
-  };
+
 
   const mainImage = product.images?.find(img => img.isMain)?.url || product.images?.[0]?.url;
 
@@ -53,7 +47,7 @@ export default function ProductCard({
         <h3 className={styles.title}>{product.name}</h3>
         
         <div className={styles.footer}>
-          <div className={styles.price}>{formatPrice(product.price)}</div>
+          <div className={styles.price}>{product.price}</div>
           
           <button className={styles.addToCartBtn} aria-label="Xem chi tiết">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="16" height="16">

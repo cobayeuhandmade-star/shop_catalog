@@ -54,12 +54,7 @@ export default function ProductModal({ product, onClose }: ProductModalProps) {
     };
   }, [onClose]);
 
-  const formatPrice = (price: number) => {
-    return new Intl.NumberFormat('vi-VN', {
-      style: 'currency',
-      currency: 'VND',
-    }).format(price);
-  };
+
 
   const nextImage = () => {
     if (images.length === 0) return;
@@ -153,7 +148,7 @@ export default function ProductModal({ product, onClose }: ProductModalProps) {
         <div className={styles.info}>
           <span className={styles.category}>{product.category}</span>
           <h2 className={`text-heading-2 ${styles.title}`}>{product.name}</h2>
-          <div className={styles.price}>{formatPrice(product.price)}</div>
+          <div className={styles.price}>{product.price}</div>
           
           <div className={styles.divider}></div>
           
