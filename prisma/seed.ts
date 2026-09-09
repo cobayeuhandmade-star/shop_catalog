@@ -26,7 +26,7 @@ async function main() {
   const productsData = [
     {
       name: "Sofa Vải Cao Cấp",
-      price: 8500000,
+      price: "8500000",
       category: "Nội thất",
       subCategory: "Ghế",
       material: "Vải bọc nhập khẩu, khung gỗ sồi",
@@ -35,7 +35,7 @@ async function main() {
     },
     {
       name: "Bàn Trà Gỗ Sồi",
-      price: 3200000,
+      price: "3200000",
       category: "Nội thất",
       subCategory: "Bàn",
       material: "Gỗ sồi tự nhiên nguyên khối",
@@ -44,7 +44,7 @@ async function main() {
     },
     {
       name: "Tủ Quần Áo Gỗ Công Nghiệp",
-      price: 4500000,
+      price: "4500000",
       category: "Nội thất",
       subCategory: "Tủ",
       material: "Gỗ MDF lõi xanh chống ẩm",
@@ -53,7 +53,7 @@ async function main() {
     },
     {
       name: "Kệ Sách Treo Tường",
-      price: 850000,
+      price: "850000",
       category: "Nội thất",
       subCategory: "Kệ",
       material: "Gỗ thông tự nhiên sơn phủ PU",
@@ -62,7 +62,7 @@ async function main() {
     },
     {
       name: "Combo Phòng Ngủ Hiện Đại",
-      price: 15500000,
+      price: "15500000",
       category: "Nội thất",
       subCategory: "Combo",
       material: "Gỗ MDF phủ Melamine cao cấp",
@@ -71,7 +71,7 @@ async function main() {
     },
     {
       name: "Ghế Thư Giãn Đọc Sách",
-      price: 2500000,
+      price: "2500000",
       category: "Nội thất",
       subCategory: "Ghế",
       material: "Khung sắt sơn tĩnh điện, nệm bọc da",
@@ -80,7 +80,7 @@ async function main() {
     },
     {
       name: "Thảm Trải Sàn Bắc Âu",
-      price: 1200000,
+      price: "1200000",
       category: "Nội thất",
       subCategory: "Khác",
       material: "Sợi tổng hợp cao cấp, mặt đáy chống trượt",
@@ -89,7 +89,7 @@ async function main() {
     },
     {
       name: "Cây Thông Noel Mini Dể Bàn",
-      price: 450000,
+      price: "450000",
       category: "Noel",
       subCategory: "Cây Thông",
       material: "Nhựa PE cao cấp, chậu gốm",
@@ -98,7 +98,7 @@ async function main() {
     },
     {
       name: "Vòng Nguyệt Quế Treo Cửa",
-      price: 350000,
+      price: "350000",
       category: "Noel",
       subCategory: "Treo",
       material: "Lá thông nhân tạo, quả thông khô",
@@ -107,7 +107,7 @@ async function main() {
     },
     {
       name: "Quả Châu Đỏ Trang Trí",
-      price: 150000,
+      price: "150000",
       category: "Noel",
       subCategory: "Topping",
       material: "Nhựa cao cấp mạ bóng",
@@ -116,7 +116,7 @@ async function main() {
     },
     {
       name: "Tiểu Cảnh Hang Đá Chúa Hài Đồng",
-      price: 850000,
+      price: "850000",
       category: "Noel",
       subCategory: "Tiểu Cảnh",
       material: "Gỗ ép, nhựa, rêu nhân tạo",
@@ -125,7 +125,7 @@ async function main() {
     },
     {
       name: "Quả Cầu Tuyết Thủy Tinh",
-      price: 250000,
+      price: "250000",
       category: "Noel",
       subCategory: "Bàn",
       material: "Thủy tinh, đế nhựa dán gỗ",
@@ -134,7 +134,7 @@ async function main() {
     },
     {
       name: "Dây Đèn Đom Đóm",
-      price: 100000,
+      price: "100000",
       category: "Noel",
       subCategory: "Khác",
       material: "Dây đồng, nhựa",
@@ -143,7 +143,7 @@ async function main() {
     },
     {
       name: "Set Lì Xì Đỏ Phúc Lộc",
-      price: 120000,
+      price: "120000",
       category: "Tết",
       material: "Giấy mỹ thuật dày dặn, ép kim",
       size: "17cm x 9cm",
@@ -151,7 +151,7 @@ async function main() {
     },
     {
       name: "Bình Hoa Mai Giả Cao Cấp",
-      price: 850000,
+      price: "850000",
       category: "Tết",
       material: "Lụa cao cấp, thân thép bọc nhựa",
       size: "Cao 90cm",
@@ -159,7 +159,7 @@ async function main() {
     },
     {
       name: "Bó Hoa Khô Vintage",
-      price: 250000,
+      price: "250000",
       category: "Hoa khô",
       material: "Hoa lavender, lúa mạch khô tự nhiên",
       size: "Cao 50cm",
@@ -167,7 +167,7 @@ async function main() {
     },
     {
       name: "Lọ Cỏ Đuôi Thỏ",
-      price: 180000,
+      price: "180000",
       category: "Hoa khô",
       material: "Cỏ đuôi thỏ sấy khô",
       size: "Cao 30cm",
