@@ -26,7 +26,7 @@ export default async function GallerySection() {
     <section id="hinh-anh" className={styles.gallerySection}>
       <div className={styles.container}>
         <div className={styles.header}>
-          <h2 className={`text-heading-1 ${styles.title}`}>Hình Ảnh Thực Tế</h2>
+          <h2 className={`text-heading-1 ${styles.title}`}>Ảnh FeedBack của Khách nhà Yêu</h2>
           <p className={styles.subtitle}>
             Khám phá những không gian đẹp được tô điểm bởi các sản phẩm trang trí từ Decor Shop.
           </p>
