@@ -37,15 +37,15 @@ export default async function AboutSection() {
               <div className={styles.featureIcon}>✨</div>
               <div>
                 <div className={styles.featureTitle}>Chất lượng cao cấp</div>
-                <div className={styles.featureDesc}>Sản phẩm được tuyển chọn kỹ lưỡng.</div>
+                <div className={styles.featureDesc}>Yêu Handmade tự hào là đơn vị cung cấp sản phẩm chất lượng cao, bền bỉ theo thời gian.</div>
               </div>
             </div>
             
             <div className={styles.featureItem}>
               <div className={styles.featureIcon}>🌿</div>
               <div>
-                <div className={styles.featureTitle}>Thiết kế tinh tế</div>
-                <div className={styles.featureDesc}>Đường nét thanh lịch, hợp xu hướng.</div>
+                <div className={styles.featureTitle}>Chất liệu tự nhiên</div>
+                <div className={styles.featureDesc}>Sản phẩm được làm từ chất liệu tự nhiên, gỗ thịt nguyên khối, nguyên liệu an toàn.</div>
               </div>
             </div>
             
@@ -53,7 +53,7 @@ export default async function AboutSection() {
               <div className={styles.featureIcon}>🎁</div>
               <div>
                 <div className={styles.featureTitle}>Đa dạng bộ sưu tập</div>
-                <div className={styles.featureDesc}>Trang trí theo mọi mùa lễ hội.</div>
+                <div className={styles.featureDesc}>Sản phẩm đa dạng, phù hợp với nhiều phong cách nội thất khác nhau.</div>
               </div>
             </div>
             
@@ -61,7 +61,7 @@ export default async function AboutSection() {
               <div className={styles.featureIcon}>💖</div>
               <div>
                 <div className={styles.featureTitle}>Tận tâm phục vụ</div>
-                <div className={styles.featureDesc}>Tư vấn nhiệt tình, tối ưu không gian.</div>
+                <div className={styles.featureDesc}>Tư vấn nhiệt tình, feedback của khách hàng được lắng nghe và cải thiện liên tục.</div>
               </div>
             </div>
           </div>

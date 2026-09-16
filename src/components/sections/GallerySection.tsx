@@ -28,7 +28,7 @@ export default async function GallerySection() {
         <div className={styles.header}>
           <h2 className={`text-heading-1 ${styles.title}`}>Ảnh FeedBack của Khách nhà Yêu</h2>
           <p className={styles.subtitle}>
-            Khám phá những không gian đẹp được tô điểm bởi các sản phẩm trang trí từ Decor Shop.
+            Những hình ảnh FeedBack thực tế từ khách hàng của Yêu Handmade, thể hiện sự hài lòng và niềm vui khi sử dụng sản phẩm trang trí nội thất tinh tế của chúng tôi.
           </p>
         </div>
 
