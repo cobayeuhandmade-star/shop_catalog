@@ -63,7 +63,7 @@ export default function ProductsGrid({
   if (activeCategory === "furniture") {
     subCategories = ["Bàn", "Ghế", "Tủ", "Kệ", "Combo", "Khác"];
   } else if (activeCategory === "christmas") {
-    subCategories = ["Sản Phẩm Để Bàn", "Cây Thông", "Vòng Nguyệt Quế & Sản Phẩm Treo", "Sản phẩm treo cây thông", "Concept", "Lò sưởi & Tuần Lộc", "Khác"];
+    subCategories = ["Lò sưởi & Tuần Lộc 1", "Cây Thông", "Vòng Nguyệt Quế & Sản Phẩm Treo", "Sản phẩm treo cây thông", "Concept", "Sản phẩm để bàn", "Khác"];
   }
 
   return (
