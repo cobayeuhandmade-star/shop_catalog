@@ -243,11 +243,11 @@ export default function ProductForm({ initialData, isEditing = false }: ProductF
                 )}
                 {formData.category === "Noel" && (
                   <>
-                    <option value="Sản Phẩm Để Bàn">Sản Phẩm Để Bàn</option>
+                    <option value="Lò sưởi & Tuần Lộc">Lò sưởi & Tuần Lộc</option>
                     <option value="Cây Thông">Cây Thông</option>
                     <option value="Vòng Nguyệt Quế & Sản Phẩm Treo">Vòng Nguyệt Quế & Sản Phẩm Treo</option>
                     <option value="Sản phẩm treo cây thông">Sản phẩm treo cây thông</option>
-                    <option value="Lò sưởi & Tuần Lộc">Lò sưởi & Tuần Lộc</option>
+                    <option value="Sản Phẩm Để Bàn">Sản Phẩm Để Bàn</option>
                     <option value="Concept">Concept</option>
                     <option value="Khác">Khác</option>
                   </>
