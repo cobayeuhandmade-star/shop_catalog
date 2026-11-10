@@ -63,6 +63,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       return session;
     },
   },
-  // Sử dụng biến môi trường mặc định là NEXTAUTH_SECRET (hoặc AUTH_SECRET cho v5)
-  secret: process.env.AUTH_SECRET || "super-secret-key-for-dev",
+  // Auth.js v5 đọc AUTH_SECRET. Giữ NEXTAUTH_SECRET làm fallback cho tương thích.
+  // KHÔNG hardcode secret: thiếu biến thì Auth.js sẽ báo lỗi thay vì dùng khoá công khai.
+  secret: process.env.AUTH_SECRET || process.env.NEXTAUTH_SECRET,
 });

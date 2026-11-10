@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { revalidatePath } from "next/cache";
+import { auth } from "@/auth";
 
 // Lấy danh sách ảnh gallery
 export async function GET() {
@@ -16,6 +17,11 @@ export async function GET() {
 
 // Thêm ảnh mới vào gallery
 export async function POST(request: Request) {
+  const session = await auth();
+  if (!session) {
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  }
+
   try {
     const { url, title } = await request.json();
 

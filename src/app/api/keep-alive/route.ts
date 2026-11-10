@@ -13,10 +13,10 @@ export async function GET() {
       message: "Database is awake and active!" 
     });
   } catch (error) {
+    console.error("Keep-alive DB check failed:", error);
     return NextResponse.json({ 
       status: "error", 
-      message: "Failed to connect to database",
-      details: error instanceof Error ? error.message : "Unknown error"
+      message: "Failed to connect to database"
     }, { status: 500 });
   }
 }

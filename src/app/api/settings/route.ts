@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
-import { revalidatePath } from 'next/cache';
+import { auth } from "@/auth";
 
 // Lấy danh sách cấu hình (hoặc 1 key cụ thể)
 export async function GET(request: Request) {
@@ -22,6 +22,11 @@ export async function GET(request: Request) {
 
 // Cập nhật cấu hình
 export async function POST(request: Request) {
+  const session = await auth();
+  if (!session) {
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  }
+
   try {
     const { key, value } = await request.json();
 

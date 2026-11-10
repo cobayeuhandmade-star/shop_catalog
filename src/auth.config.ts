@@ -24,5 +24,5 @@ export const authConfig = {
     },
   },
   providers: [], // Cấu hình providers ở file auth.ts để tránh lỗi Edge runtime với Prisma
-  secret: process.env.AUTH_SECRET || "super-secret-key-for-dev",
+  secret: process.env.AUTH_SECRET || process.env.NEXTAUTH_SECRET,
 } satisfies NextAuthConfig;
